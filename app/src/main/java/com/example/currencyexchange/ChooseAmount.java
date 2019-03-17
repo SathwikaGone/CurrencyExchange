@@ -14,13 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class ChooseAmount extends Fragment {
-    private int amount;
+    private double amount;
 
     public ChooseAmount() {
         super();
     }
     public interface ChooseAmountCallBack{
-        void swapoutamount(int amount);
+        void swapoutamount(double amount);
     }
     ChooseAmountCallBack cAmount;
     @Nullable
@@ -33,9 +33,9 @@ public class ChooseAmount extends Fragment {
             @Override
             public void onClick(View v) {
                 String p=amt.getText().toString();
-               amount=Integer.parseInt(p);
+               amount=Double.parseDouble(p);
                 Log.d("ChooseAmount ","Amount was entered");
-                cAmount.swapoutamount(amount);
+                cAmount.swapoutamount(Math.round(amount*100.0)/100.0);
             }
         });
         return v;
